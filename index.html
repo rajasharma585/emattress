@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="hi">
 <head>
@@ -5,57 +6,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rilaxtion Mattress – Sleep Better</title>
   <meta name="description" content="Rilaxtion Mattress – premium mattresses, pillows & bedding. Free shipping, 100-Night Trial, 10-Year Warranty."/>
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    :root{
-      --brand:#2b6cb0;          /* primary */
-      --brand-2:#0ea5e9;        /* accent */
-      --dark:#0f172a;           /* heading */
-      --muted:#6b7280;          /* text */
-      --cream:#f8fafc;          /* background */
-      --star:#f59e0b;           /* rating */
-    }
-    body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--cream);color:var(--dark)}
-    .shadow-soft{box-shadow:0 10px 25px rgba(2,8,23,.08);} 
-    .rounded-2xl{border-radius:1.25rem!important;}
+    /* ---------------------------
+       RILAXTlON — Professional Frontend Single File
+       Inline CSS: keep everything in one file for client delivery.
+       Put your images into an `images/` folder relative to this file:
+       - logo.jpg
+       - mattress-bg.jpg (hero background)
+       - headingimage.jpg (hero main)
+       - mattress1.jpg .. mattress8.jpg (product images)
+       - testimonial-*.jpg (optional)
+       If an image missing, placeholders will show.
+    --------------------------- */
 
-    /* Navbar */
-    .navbar-brand{font-weight:800;letter-spacing:.3px;color:var(--dark)!important}
+    :root{
+      --brand:#2b6cb0;
+      --accent:#0ea5e9;
+      --dark:#0f172a;
+      --muted:#6b7280;
+      --cream:#f8fafc;
+      --star:#f59e0b;
+      --glass: rgba(255,255,255,0.8);
+      --radius: 12px;
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--cream);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Utility */
+    .shadow-soft{box-shadow:0 10px 30px rgba(2,8,23,.08);}
+    .rounded-2xl{border-radius:var(--radius)!important;}
+    .btn-pill{border-radius:999px}
     .badge-pill{border-radius:999px}
 
-    /* Hero */
-    .hero{background:linear-gradient(135deg, #e0f2fe 0%, #fafafa 50%, #ffffff 100%);} 
-    .hero-img{max-width:600px;border-radius:1.25rem; display:block; margin-left:auto; margin-right:auto; }
+    /* Navbar */
+    .navbar-brand{font-weight:700;display:flex;align-items:center;gap:.5rem}
+    .navbar-brand img{height:46px;border-radius:8px;object-fit:cover}
+    .nav-link{color:var(--dark)!important}
+    .nav-link:hover,.nav-link:focus{color:var(--brand)!important}
 
-    /* Product Cards */
-    .product-card .price{font-size:1.1rem;font-weight:700;color:var(--dark)}
+    /* Hero */
+    .hero{
+      background: linear-gradient(135deg, rgba(14,165,233,0.06) 0%, rgba(43,108,176,0.02) 50%, #fff 100%);
+      padding:4.5rem 0;
+    }
+    .hero .lead{color:var(--muted)}
+    .hero-img{max-width:640px;border-radius:1.25rem; display:block; margin-left:auto; margin-right:auto; }
+
+    /* Product cards */
+    .product-card .price{font-size:1.05rem;font-weight:800;color:var(--dark)}
     .product-card .old{color:#9ca3af;text-decoration:line-through;font-weight:500}
     .rating i{color:var(--star)}
-    .wishlist{position:absolute;top:.75rem;right:.75rem}
+    .wishlist{position:absolute;top:.75rem;right:.75rem;z-index:2}
+
+    /* Filters */
+    .filter-bar .form-select, .filter-bar .form-control{min-width:150px}
+
+    /* Offcanvas cart */
+    .offcanvas .list-group-item img{object-fit:cover}
+
+    /* Testimonials */
+    .testimonial-card{background:linear-gradient(180deg, rgba(255,255,255,0.9), #fff); padding:1.25rem; border-radius:12px; box-shadow:0 8px 24px rgba(2,8,23,.06)}
 
     /* Counters */
     .counter{font-size:2rem;font-weight:800;color:var(--dark)}
-    .counter-wrap{background:#fff}
 
     /* Footer */
     footer a{color:#64748b;text-decoration:none}
     footer a:hover{color:var(--brand)}
 
-    .toast-container{z-index:1080}
+    /* Toast */
+    .toast-container{z-index:10800}
 
-    /* Small responsive tweaks */
-    @media (max-width: 767px){
+    /* Responsive tweaks */
+    .card-img-top{height:220px;object-fit:cover;border-top-left-radius:12px;border-top-right-radius:12px}
+    .product-card{transition:transform .22s ease, box-shadow .22s ease}
+    .product-card:hover{transform:translateY(-6px); box-shadow: 0 18px 40px rgba(2,8,23,.08)}
+    @media (max-width:767px){
+      .card-img-top{height:160px}
       .hero-img{max-width:360px}
+      .filter-bar .form-select{min-width:unset}
     }
+
+    /* Dark mode (toggle) */
+    .dark-mode{
+      background:#071023; color:#e6eef8;
+    }
+    .dark-mode .card{background:#0b1220;color:#dbe9ff}
+    .dark-mode footer{background:#071023}
+    .dark-mode .navbar, .dark-mode .bg-white{background:#071023!important;color:#e6eef8!important}
   </style>
 </head>
 <body>
 
 <!-- Toasts -->
 <div class="toast-container position-fixed top-0 end-0 p-3">
-  <div id="toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="polite" aria-atomic="true" data-bs-autohide="true" data-bs-delay="2500">
+  <div id="toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="polite" aria-atomic="true" data-bs-autohide="true" data-bs-delay="2200">
     <div class="d-flex">
       <div class="toast-body" id="toast-body">Item added to cart.</div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -66,73 +124,134 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm" aria-label="Main navigation">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <i class="bi bi-moon-stars me-2 text-primary" aria-hidden="true"></i>
-      Rilaxtion <span class="ms-1 text-primary">Mattress</span>
+    <a class="navbar-brand" href="#">
+      <img src="rilaxtionlogo.jpg" 
+     alt="Rilaxtion logo" 
+     width="150" 
+     height="80" 
+     onerror="this.src='https://via.placeholder.com/150x80?text=Logo'">
+      <div style="line-height:1;">
+        <div style="font-size:1rem">Rilaxtion <span style="color:var(--brand);font-weight:700">Mattress</span></div>
+        <small style="font-size:11px;color:var(--muted)">Better sleep, every night</small>
+      </div>
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
         <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
         <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
-      <div class="d-flex ms-lg-3">
-        <button class="btn btn-outline-primary me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart" aria-controls="cart" aria-label="Open cart">
+
+      <div class="d-flex ms-lg-3 align-items-center gap-2">
+        <button id="darkToggle" class="btn btn-outline-secondary btn-sm btn-pill" title="Toggle Dark mode"><i class="bi bi-moon-stars"></i></button>
+        <button class="btn btn-outline-primary me-2 btn-pill" type="button" data-bs-toggle="offcanvas" data-bs-target="#cart" aria-controls="cart" aria-label="Open cart">
           <i class="bi bi-bag"></i> <span class="badge bg-primary ms-1" id="cart-count">0</span>
         </button>
-        <button class="btn btn-primary" type="button">Sign In</button>
+        <button class="btn btn-primary btn-pill" type="button">Sign In</button>
       </div>
+
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero py-5 py-lg-6">
+<!-- HERO: Carousel auto-slide -->
+<section class="py-4">
   <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-6">
-        <span class="badge text-bg-primary badge-pill mb-3">100-Night Trial • Free Shipping • 10-Year Warranty</span>
-        <h1 class="display-5 fw-bold text-dark">Sleep better with <span class="text-primary">Rilaxtion</span></h1>
-        <p class="lead text-secondary">Premium memory foam and hybrid mattresses engineered for India’s climate—cooler sleep, superior spine alignment, and plush comfort.</p>
-        <div class="d-flex gap-2">
-          <a href="#shop" class="btn btn-primary btn-lg"><i class="bi bi-bag me-1"></i> Shop Now</a>
-          <a href="#why" class="btn btn-outline-primary btn-lg">Why Rilaxtion?</a>
-        </div>
-        <div class="d-flex align-items-center gap-2 mt-3">
-          <div class="rating" aria-label="rating 4.8">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+    <div id="heroCarousel" class="carousel slide shadow-soft rounded-2xl" data-bs-ride="carousel" data-bs-interval="4500">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row align-items-center g-4 p-4">
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold">Sleep better with <span class="text-primary">Rilaxtion</span></h1>
+              <p class="lead text-muted">Premium memory foam and hybrid mattresses engineered for India's climate—cooler sleep, superior spine alignment, and plush comfort.</p>
+              <div class="d-flex gap-2">
+                <a href="#shop" class="btn btn-primary btn-lg"><i class="bi bi-bag me-1"></i> Shop Now</a>
+                <a href="#why" class="btn btn-outline-primary btn-lg">Why Rilaxtion?</a>
+              </div>
+              <div class="mt-3 small text-muted"><i class="bi bi-star-fill text-warning"></i> 4.8/5 — 3,200+ happy sleepers</div>
+            </div>
+            <div class="col-lg-6 text-center">
+              <img class="img-fluid hero-img" alt="Rilaxtion mattress on a modern bed" src="headingimage.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/640x380?text=Mattress+Hero'">
+            </div>
           </div>
-          <small class="text-muted">4.8/5 from 3,200+ happy sleepers</small>
         </div>
+
+        <div class="carousel-item">
+          <div class="row align-items-center g-4 p-4">
+            <div class="col-lg-6">
+              <h2 class="fw-bold">Cool Gel Memory Foam</h2>
+              <p class="text-muted">Stay cool all night with our breathable gel infused top layer.</p>
+              <a class="btn btn-primary" href="#shop">Explore</a>
+            </div>
+            <div class="col-lg-6 text-center">
+              <img class="img-fluid rounded-2xl" src="mattress1.jpg" alt="cool gel" onerror="this.src='https://via.placeholder.com/540x320?text=Cool+Gel'">
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row align-items-center g-4 p-4">
+            <div class="col-lg-6">
+              <h2 class="fw-bold">Orthopedic Support</h2>
+              <p class="text-muted">Clinically recommended for back support and posture alignment.</p>
+              <a class="btn btn-primary" href="#shop">Shop Ortho</a>
+            </div>
+            <div class="col-lg-6 text-center">
+              <img class="img-fluid rounded-2xl" src="mattress3.jpg" alt="ortho" onerror="this.src='https://via.placeholder.com/540x320?text=Ortho'">
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="col-lg-6 text-center">
-        <!-- Use your hosted image URL here instead of the Unsplash placeholder -->
-        <img class="img-fluid hero-img shadow-soft" alt="Rilaxtion mattress on a modern bed" src="headingimage.jpg" loading="lazy">
-      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
-</header>
+</section>
 
-<!-- USP STRIP -->
-<section id="why" class="py-4">
+<!-- USP Strip -->
+<section class="py-3">
   <div class="container">
-    <div class="row g-3">
-      <div class="col-6 col-lg-3">
-        <div class="p-3 bg-white rounded-2xl shadow-soft h-100 d-flex align-items-center gap-3"><i class="bi bi-truck fs-3 text-primary" aria-hidden="true"></i> <div><div class="fw-bold">Free & Fast Delivery</div><small class="text-muted">Across major cities</small></div></div>
+    <div class="row g-3 text-center">
+      <div class="col-6 col-md-3">
+        <div class="p-3 bg-white rounded-2xl shadow-soft h-100">
+          <i class="bi bi-truck fs-3 text-primary"></i>
+          <div class="fw-bold mt-2">Free Delivery</div>
+          <small class="text-muted">Across major cities</small>
+        </div>
       </div>
-      <div class="col-6 col-lg-3">
-        <div class="p-3 bg-white rounded-2xl shadow-soft h-100 d-flex align-items-center gap-3"><i class="bi bi-arrow-repeat fs-3 text-primary" aria-hidden="true"></i> <div><div class="fw-bold">100-Night Trial</div><small class="text-muted">Easy returns</small></div></div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 bg-white rounded-2xl shadow-soft h-100">
+          <i class="bi bi-arrow-repeat fs-3 text-primary"></i>
+          <div class="fw-bold mt-2">100-Night Trial</div>
+          <small class="text-muted">Easy returns</small>
+        </div>
       </div>
-      <div class="col-6 col-lg-3">
-        <div class="p-3 bg-white rounded-2xl shadow-soft h-100 d-flex align-items-center gap-3"><i class="bi bi-shield-check fs-3 text-primary" aria-hidden="true"></i> <div><div class="fw-bold">10-Year Warranty</div><small class="text-muted">Hassle-free</small></div></div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 bg-white rounded-2xl shadow-soft h-100">
+          <i class="bi bi-shield-check fs-3 text-primary"></i>
+          <div class="fw-bold mt-2">10-Year Warranty</div>
+          <small class="text-muted">Hassle-free</small>
+        </div>
       </div>
-      <div class="col-6 col-lg-3">
-        <div class="p-3 bg-white rounded-2xl shadow-soft h-100 d-flex align-items-center gap-3"><i class="bi bi-thermometer-sun fs-3 text-primary" aria-hidden="true"></i> <div><div class="fw-bold">Cool Gel Foam</div><small class="text-muted">All-season comfort</small></div></div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 bg-white rounded-2xl shadow-soft h-100">
+          <i class="bi bi-thermometer-sun fs-3 text-primary"></i>
+          <div class="fw-bold mt-2">Cool Gel Foam</div>
+          <small class="text-muted">All-season comfort</small>
+        </div>
       </div>
     </div>
   </div>
@@ -141,11 +260,12 @@
 <!-- FILTERS + PRODUCT GRID -->
 <section id="shop" class="py-5">
   <div class="container">
-    <div class="d-lg-flex align-items-end justify-content-between gap-3 mb-4">
+    <div class="d-lg-flex align-items-end justify-content-between gap-3 mb-4 filter-bar">
       <div>
         <h2 class="fw-bold mb-1">Best Sellers</h2>
         <p class="text-muted mb-0">Choose your size, firmness & budget. COD available.</p>
       </div>
+
       <div class="d-flex flex-wrap gap-2">
         <div class="input-group">
           <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
@@ -171,76 +291,13 @@
       </div>
     </div>
 
-    <div id="grid" class="row g-4">
-      <!-- Product items: use remote images or your hosted images -->
-      <div class="col-12 col-sm-6 col-lg-4 product" data-size="Queen" data-firm="Medium" data-price="17999"
-           data-id="m1" data-name="Cool Gel Memory Foam – Queen" data-img="mattress4.jpg"
-           data-desc="Pressure-relieving foam with cooling gel for Indian summers." data-thickness='[6,8,10]' tabindex="0" role="button" aria-label="Open product Cool Gel Memory Foam – Queen">
-        <div class="card product-card h-100 shadow-soft position-relative rounded-2xl">
-          <button class="btn btn-light wishlist shadow-sm" aria-label="Add to wishlist" data-wish><i class="bi bi-heart"></i></button>
-          <img class="card-img-top" alt="Cool Gel Memory Foam Mattress" src="mattress4.jpg" loading="lazy">
-          <div class="card-body">
-            <h5 class="card-title">Cool Gel Memory Foam – Queen</h5>
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="price">₹17,999 <span class="old ms-1">₹22,999</span></div>
-              <div class="rating" aria-hidden="true"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></div>
-            </div>
-            <p class="mt-2 text-muted small">Pressure-relieving foam with cooling gel for Indian summers.</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-primary flex-grow-1 btn-detail">Buy Now</button>
-              <button class="btn btn-outline-secondary" data-quick>Quick View</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4 product" data-size="King" data-firm="Medium" data-price="25999"
-           data-id="m2" data-name="Hybrid Pocket Spring – King" data-img="mattress1.jpg"
-           data-desc="Bounce of springs + comfort of foam. Zero partner disturbance." data-thickness='[8,10,12]' tabindex="0" role="button" aria-label="Open product Hybrid Pocket Spring – King">
-        <div class="card product-card h-100 shadow-soft position-relative rounded-2xl">
-          <button class="btn btn-light wishlist shadow-sm" aria-label="Add to wishlist" data-wish><i class="bi bi-heart"></i></button>
-          <img class="card-img-top" alt="Hybrid Pocket Spring Mattress" src="mattress1.jpg" loading="lazy">
-          <div class="card-body">
-            <h5 class="card-title">Hybrid Pocket Spring – King</h5>
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="price">₹25,999 <span class="old ms-1">₹31,999</span></div>
-              <div class="rating" aria-hidden="true"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
-            </div>
-            <p class="mt-2 text-muted small">Bounce of springs + comfort of foam. Zero partner disturbance.</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-primary flex-grow-1 btn-detail">Buy Now</button>
-              <button class="btn btn-outline-secondary" data-quick>Quick View</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4 product" data-size="Single" data-firm="Firm" data-price="12999"
-           data-id="m3" data-name="Ortho Support – Single" data-img="mattress3.jpg"
-           data-desc="Firm orthopedic support recommended by physios." data-thickness='[5,6,8]' tabindex="0" role="button" aria-label="Open product Ortho Support – Single">
-        <div class="card product-card h-100 shadow-soft position-relative rounded-2xl">
-          <button class="btn btn-light wishlist shadow-sm" aria-label="Add to wishlist" data-wish><i class="bi bi-heart"></i></button>
-          <img class="card-img-top" alt="Orthopedic Support Mattress" src="mattress3.jpg" loading="lazy">
-          <div class="card-body">
-            <h5 class="card-title">Ortho Support – Single</h5>
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="price">₹12,999 <span class="old ms-1">₹16,499</span></div>
-              <div class="rating" aria-hidden="true"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></div>
-            </div>
-            <p class="mt-2 text-muted small">Firm orthopedic support recommended by physios.</p>
-            <div class="d-flex gap-2">
-              <button class="btn btn-primary flex-grow-1 btn-detail">Buy Now</button>
-              <button class="btn btn-outline-secondary" data-quick>Quick View</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- add more products similarly... -->
+    <div id="grid" class="row g-4" aria-live="polite" aria-atomic="true">
+      <!-- Products injected by JS -->
     </div>
   </div>
 </section>
 
-<!-- PRODUCT DETAIL MODAL (full) -->
+<!-- PRODUCT DETAIL MODAL -->
 <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content rounded-2xl">
@@ -281,6 +338,7 @@
               <button id="d-add" class="btn btn-primary flex-grow-1"><i class="bi bi-bag me-1"></i> Add to Cart</button>
               <button id="d-buy" class="btn btn-outline-primary flex-grow-1">Buy Now</button>
             </div>
+            <small class="d-block mt-3 text-muted">COD available • Free returns within 100 nights</small>
           </div>
         </div>
       </div>
@@ -288,7 +346,7 @@
   </div>
 </div>
 
-<!-- QUICK VIEW (small) -->
+<!-- QUICK VIEW -->
 <div class="modal fade" id="quickModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-md modal-dialog-centered">
     <div class="modal-content rounded-2xl">
@@ -311,7 +369,7 @@
   </div>
 </div>
 
-<!-- CHECKOUT / BUY NOW MODAL -->
+<!-- CHECKOUT MODAL -->
 <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content rounded-2xl">
@@ -359,7 +417,7 @@
           <div class="col-lg-6">
             <div class="p-3 bg-white rounded-2xl shadow-soft">
               <h6>Order Summary</h6>
-              <ul id="checkout-items" class="list-group mb-3"></ul>
+              <ul id="checkout-items" class="list-group mb-3" aria-live="polite"></ul>
               <div class="d-flex justify-content-between fw-bold mb-3">
                 <span>Total</span><span id="checkout-total">₹0</span>
               </div>
@@ -367,7 +425,7 @@
                 <button id="pay-now" class="btn btn-success">Pay Now</button>
                 <button id="place-cod" class="btn btn-outline-secondary">Place Order (Cash on Delivery)</button>
               </div>
-              <small class="text-muted d-block mt-2">यह एक demo checkout है — real gateway integrate करें।</small>
+              <small class="text-muted d-block mt-2"></small>
             </div>
           </div>
         </div>
@@ -383,7 +441,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body d-flex flex-column">
-    <ul id="cart-items" class="list-group mb-3"></ul>
+    <ul id="cart-items" class="list-group mb-3" aria-live="polite"></ul>
     <div class="mt-auto">
       <div class="d-flex justify-content-between fw-bold mb-2">
         <span>Total</span>
@@ -396,8 +454,8 @@
   </div>
 </div>
 
-<!-- Testimonial Section -->
-<section id="testimonials" class="testimonials section-padding bg-light">
+<!-- Testimonials -->
+<section id="testimonials" class="testimonials section-padding bg-light py-5">
   <div class="container">
     <div class="row text-center mb-4">
       <h2 class="fw-bold">What Our Clients Say</h2>
@@ -407,15 +465,15 @@
       <div class="carousel-inner">
 
         <div class="carousel-item active text-center">
-          <div class="card p-4 shadow-sm">
-            <p class="mb-3">"Rilaxtion mattress ne meri नींद aur पीठ दर्द dono improve kar diya. Quality bahut acchi hai!"</p>
+          <div class="card p-4 testimonial-card">
+            <p class="mb-3">"Rilaxtion Mattress has improved both my sleep and back pain. The quality is excellent!"</p>
             <h5 class="fw-bold">Rahul Verma</h5>
             <span class="text-muted">Delhi, India</span>
           </div>
         </div>
 
         <div class="carousel-item text-center">
-          <div class="card p-4 shadow-sm">
+          <div class="card p-4 testimonial-card">
             <p class="mb-3">"Service fast thi aur product bilkul expected jaisa. Highly recommend!"</p>
             <h5 class="fw-bold">Priya Sharma</h5>
             <span class="text-muted">Mumbai, India</span>
@@ -423,7 +481,7 @@
         </div>
 
         <div class="carousel-item text-center">
-          <div class="card p-4 shadow-sm">
+          <div class="card p-4 testimonial-card">
             <p class="mb-3">"Best mattress I have ever used. Value for money."</p>
             <h5 class="fw-bold">Amit Kumar</h5>
             <span class="text-muted">Bangalore, India</span>
@@ -431,11 +489,49 @@
         </div>
 
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
     </div>
   </div>
 </section>
 
-<!-- Counter Section -->
+<!-- FAQ -->
+<section id="faq" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1" aria-expanded="true" aria-controls="f1">How does the 100‑Night Trial work?</button>
+        </h2>
+        <div id="f1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Try the mattress for 100 nights. If it’s not a match, we’ll pick it up and issue a full refund. T&Cs apply.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2" aria-expanded="false" aria-controls="f2">"How to claim the warranty?"</button>
+        </h2>
+        <div id="f2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">"After the purchase invoice and product registration, our support team will guide you through the warranty claim process."</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3" aria-expanded="false" aria-controls="f3">Do you offer Cash on Delivery?</button>
+        </h2>
+        <div id="f3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, COD is available in most serviceable pincodes. You can also pay via UPI, cards and netbanking.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Counters -->
 <section id="counters" class="counters section-padding text-white" style="background:#0d6efd;">
   <div class="container text-center">
     <div class="row g-4">
@@ -459,22 +555,45 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-white border-top py-4 mt-4">
+<!-- Contact + Footer -->
+<footer class="bg-white border-top py-5 mt-4" id="contact">
   <div class="container">
     <div class="row g-3 align-items-center">
-      <div class="col-md-6">
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-moon-stars text-primary" aria-hidden="true"></i>
-          <strong>Rilaxtion Mattress</strong>
+      <div class="col-md-5">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img src="rilaxtionlogo.jpg" 
+     alt="Rilaxtion logo" 
+     width="120" 
+     height="70" 
+     onerror="this.src='https://via.placeholder.com/150x80?text=Logo'">
+          <div>
+            <strong>Rilaxtion Mattress</strong><br>
+            <small class="text-muted">© <span id="year"></span> Rilaxtion Sleep Pvt. Ltd.</small>
+          </div>
         </div>
-        <small class="text-muted">© <span id="year"></span> Rilaxtion Sleep Pvt. Ltd. All rights reserved.</small>
+        <p class="text-muted">Premium mattresses made for comfort and longevity. Contact our team for B2B and retail enquiries.</p>
       </div>
-      <div class="col-md-6 text-md-end">
-        <a href="#" class="me-3">Privacy</a>
-        <a href="#" class="me-3">Terms</a>
-        <a href="#">Refund Policy</a>
+
+      <div class="col-md-3">
+        <h6>Quick Links</h6>
+        <a href="#shop" class="d-block mb-1">Shop</a>
+        <a href="#why" class="d-block mb-1">Why Us</a>
+        <a href="#faq" class="d-block mb-1">FAQ</a>
       </div>
+
+      <div class="col-md-4">
+        <h6>Contact</h6>
+        <form id="contact-form">
+          <div class="mb-2"><input id="ct-name" class="form-control" placeholder="Your name" required></div>
+          <div class="mb-2"><input id="ct-email" type="email" class="form-control" placeholder="Email" required></div>
+          <div class="mb-2"><textarea id="ct-msg" class="form-control" rows="2" placeholder="Message"></textarea></div>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="button" id="ct-reset" class="btn btn-outline-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </footer>
@@ -483,126 +602,89 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-/* ---------------------------
+/* ============================
    Utilities & initial state
-   --------------------------- */
+   ============================ */
 const fmt = n => '₹' + Number(n).toLocaleString('en-IN');
 const toastEl = document.getElementById('toast');
 const toast = new bootstrap.Toast(toastEl);
-
-let cart = JSON.parse(localStorage.getItem('rx_cart')||'[]');
-const save = ()=> localStorage.setItem('rx_cart', JSON.stringify(cart));
+document.getElementById('year').textContent = new Date().getFullYear();
 
 function showToast(msg){
   document.getElementById('toast-body').textContent = msg;
   toast.show();
 }
 
-/* ---------------------------
-   Cart rendering & helpers
-   --------------------------- */
-function renderCart(){
-  const list = document.getElementById('cart-items');
-  list.innerHTML = '';
-  let total = 0;
-  cart.forEach((it, idx)=>{
-    total += it.price * it.qty;
-    const li = document.createElement('li');
-    li.className = 'list-group-item d-flex align-items-center justify-content-between';
-    li.innerHTML = `
-      <div class="d-flex align-items-center gap-3">
-        <img src="${it.img}" alt="${it.name}" width="48" height="48" class="rounded" loading="lazy"/>
-        <div>
-          <div class="fw-semibold">${it.name}</div>
-          <small class="text-muted">${fmt(it.price)} × 
-            <button class='btn btn-sm btn-light border ms-1 me-1' data-minus='${idx}' aria-label="Decrease">−</button>
-            <span>${it.qty}</span>
-            <button class='btn btn-sm btn-light border ms-1' data-plus='${idx}' aria-label="Increase">+</button>
-          </small>
-        </div>
-      </div>
-      <div class="text-end">
-        <div class="fw-bold">${fmt(it.price*it.qty)}</div>
-        <button class="btn btn-sm btn-outline-danger mt-1" data-del='${idx}' aria-label="Remove"><i class="bi bi-trash"></i></button>
-      </div>`;
-    list.appendChild(li);
-  });
-  document.getElementById('cart-total').textContent = fmt(total);
-  document.getElementById('cart-count').textContent = cart.reduce((a,b)=>a+b.qty,0);
-}
+/* ============================
+   Demo product data
+   Replace image filenames in images/ folder with your actual images.
+   ============================ */
+const PRODUCTS = [
+  {id:'m1', name:'Cool Gel Memory Foam – Queen', price:17999, old:22999, size:'Queen', firm:'Medium', img:'images/mattress4.jpg', desc:'Pressure-relieving foam with cooling gel for Indian summers.', thickness:[6,8,10], popular:95},
+  {id:'m2', name:'Hybrid Pocket Spring – King', price:25999, old:31999, size:'King', firm:'Medium', img:'images/mattress1.jpg', desc:'Bounce of springs + comfort of foam. Zero partner disturbance.', thickness:[8,10,12], popular:88},
+  {id:'m3', name:'Ortho Support – Single', price:12999, old:16499, size:'Single', firm:'Firm', img:'images/mattress3.jpg', desc:'Firm orthopedic support recommended by physios.', thickness:[5,6,8], popular:80},
+  {id:'m4', name:'Luxury Hybrid – Queen', price:34999, old:43999, size:'Queen', firm:'Soft', img:'images/mattress2.jpg', desc:'High-end hybrid with breathable top layers.', thickness:[10,12], popular:70},
+  {id:'m5', name:'Budget Comfort – Single', price:7999, old:9999, size:'Single', firm:'Medium', img:'images/mattress5.jpg', desc:'Affordable comfort for everyday sleepers.', thickness:[5,6], popular:60},
+  {id:'m6', name:'Firm Ortho Pro – King', price:27999, old:33999, size:'King', firm:'Firm', img:'images/mattress6.jpg', desc:'Extra firm layers for spinal alignment.', thickness:[10,12], popular:55},
+  {id:'m7', name:'Cloud Soft – Queen', price:19999, old:24999, size:'Queen', firm:'Soft', img:'images/mattress7.jpg', desc:'Soft plush top for side sleepers.', thickness:[8,10], popular:50},
+  {id:'m8', name:'Travel Roll Up Mattress – Single', price:4999, old:6999, size:'Single', firm:'Medium', img:'images/mattress8.jpg', desc:'Portable mattress for guests and travel.', thickness:[3,4], popular:40}
+];
 
-/* Add item: merge if same id+size+thickness */
-function addToCart(item){
-  // ensure numeric price and qty
-  item.price = Number(item.price) || 0;
-  item.qty = Number(item.qty) || 1;
-  const exIdx = cart.findIndex(i=>i.id===item.id && i.size===item.size && String(i.thickness)===String(item.thickness));
-  if(exIdx > -1){
-    cart[exIdx].qty += item.qty;
-  } else {
-    cart.push({...item});
-  }
-  save();
-  renderCart();
-  showToast('Cart updated — ' + item.name);
-}
+/* ============================
+   Cart state (localStorage)
+   ============================ */
+let cart = JSON.parse(localStorage.getItem('rx_cart')||'[]');
+const save = ()=> localStorage.setItem('rx_cart', JSON.stringify(cart));
+function updateCartCount(){ document.getElementById('cart-count').textContent = cart.reduce((a,b)=>a+b.qty,0); }
+updateCartCount();
 
-/* Init render */
-renderCart();
-
-/* ---------------------------
-   Wishlist toggle (delegation)
-   --------------------------- */
-document.body.addEventListener('click',(e)=>{
-  const w = e.target.closest('[data-wish]');
-  if(w){
-    w.classList.toggle('text-danger');
-    w.innerHTML = w.classList.contains('text-danger') ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>';
-  }
-});
-
-/* ---------------------------
-   Product interaction (delegation)
-   --------------------------- */
+/* ============================
+   Render product grid
+   ============================ */
 const grid = document.getElementById('grid');
-let lastDetailProduct = null;
 
-grid.addEventListener('click',(e)=>{
-  const card = e.target.closest('.product');
-  if(!card) return;
+function renderProducts(list = PRODUCTS){
+  grid.innerHTML = '';
+  list.forEach(p=>{
+    const col = document.createElement('div');
+    col.className = 'col-12 col-sm-6 col-lg-4 product';
+    col.dataset.size = p.size;
+    col.dataset.firm = p.firm;
+    col.dataset.price = p.price;
+    col.dataset.id = p.id;
+    col.dataset.name = p.name;
+    col.dataset.img = p.img;
+    col.dataset.desc = p.desc;
+    col.dataset.thickness = JSON.stringify(p.thickness || []);
+    col.tabIndex = 0;
+    col.setAttribute('role','button');
+    col.setAttribute('aria-label','Open product '+p.name);
 
-  // Quick View button
-  if(e.target.closest('[data-quick]')){
-    const prod = getProductData(card);
-    openQuick(prod);
-    return;
-  }
-
-  // Buy Now button
-  if(e.target.closest('.btn-detail')){
-    const prod = getProductData(card);
-    openDetail(prod);
-    return;
-  }
-
-  // If clicked on card area (not a button) open detail
-  if(e.target.closest('.card') && !e.target.closest('button')){
-    const prod = getProductData(card);
-    openDetail(prod);
-    return;
-  }
-});
-
-/* Enter key support to open product when focused */
-grid.querySelectorAll('.product').forEach(p=>{
-  p.addEventListener('keydown', (ev)=>{
-    if(ev.key === 'Enter') {
-      openDetail(getProductData(p));
-    }
+    col.innerHTML = `
+      <div class="card product-card h-100 shadow-soft position-relative rounded-2xl">
+        <button class="btn btn-light wishlist shadow-sm" aria-label="Add to wishlist" data-wish><i class="bi bi-heart"></i></button>
+        <img class="card-img-top" alt="${p.name}" src="${p.img}" loading="lazy" onerror="this.src='https://via.placeholder.com/800x500?text=Product'">
+        <div class="card-body">
+          <h5 class="card-title">${p.name}</h5>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="price">${fmt(p.price)} <span class="old ms-1">₹${Number(p.old).toLocaleString('en-IN')}</span></div>
+            <div class="rating" aria-hidden="true"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></div>
+          </div>
+          <p class="mt-2 text-muted small">${p.desc}</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary flex-grow-1 btn-detail">Buy Now</button>
+            <button class="btn btn-outline-secondary" data-quick>Quick View</button>
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(col);
   });
-});
+}
+renderProducts();
 
-/* Safely read dataset */
+/* ============================
+   Helpers: product dataset reader
+   ============================ */
 function getProductData(card){
   let thickness = [];
   try{ thickness = JSON.parse(card.dataset.thickness || '[]'); } catch(e){ thickness = []; }
@@ -617,29 +699,69 @@ function getProductData(card){
   };
 }
 
-/* ---------------------------
-   Quick View
-   --------------------------- */
+/* ============================
+   Wishlist toggle
+   ============================ */
+document.body.addEventListener('click',(e)=>{
+  const w = e.target.closest('[data-wish]');
+  if(w){
+    w.classList.toggle('text-danger');
+    w.innerHTML = w.classList.contains('text-danger') ? '<i class="bi bi-heart-fill"></i>' : '<i class="bi bi-heart"></i>';
+    showToast(w.classList.contains('text-danger') ? 'Added to wishlist' : 'Removed from wishlist');
+  }
+});
+
+/* ============================
+   Product interactions
+   ============================ */
+let lastDetailProduct = null;
+grid.addEventListener('click',(e)=>{
+  const card = e.target.closest('.product');
+  if(!card) return;
+
+  // Quick View
+  if(e.target.closest('[data-quick]')){
+    const prod = getProductData(card);
+    openQuick(prod);
+    return;
+  }
+
+  // Buy Now
+  if(e.target.closest('.btn-detail')){
+    const prod = getProductData(card);
+    openDetail(prod);
+    return;
+  }
+
+  // Click card open detail
+  if(e.target.closest('.card') && !e.target.closest('button')){
+    const prod = getProductData(card);
+    openDetail(prod);
+    return;
+  }
+});
+
+/* ============================
+   Quick view modal
+   ============================ */
 const quickModal = new bootstrap.Modal(document.getElementById('quickModal'));
 function openQuick(prod){
   document.getElementById('q-title').textContent = prod.name;
   document.getElementById('q-desc').textContent = prod.desc;
   document.getElementById('q-price').textContent = fmt(prod.price);
-  document.getElementById('q-img').src = prod.img;
-  document.getElementById('q-img').alt = prod.name;
-
-  // attach add handler
+  const qImg = document.getElementById('q-img');
+  qImg.src = prod.img; qImg.alt = prod.name;
   document.getElementById('q-add').onclick = ()=> {
-    addToCart({id:prod.id, name:prod.name, price:prod.price, img:prod.img, size: prod.size || 'Queen', thickness: prod.thickness[0]||0});
+    addToCart({id:prod.id, name:prod.name, price:prod.price, img:prod.img, size: prod.size || 'Queen', thickness: prod.thickness[0]||0, qty:1});
     quickModal.hide();
   };
   document.getElementById('q-view').onclick = ()=> { quickModal.hide(); openDetail(prod); };
   quickModal.show();
 }
 
-/* ---------------------------
-   Detail modal
-   --------------------------- */
+/* ============================
+   Detail modal (full)
+   ============================ */
 const detailModalEl = document.getElementById('detailModal');
 const detailModal = new bootstrap.Modal(detailModalEl);
 
@@ -664,16 +786,15 @@ function openDetail(prod){
     tSel.appendChild(opt);
   }
 
-  // size
+  // size select best-effort set
   const sizeSel = document.getElementById('d-size');
   if(prod.size) {
-    // try to set to product size, else keep default
     for(const o of Array.from(sizeSel.options)) {
       if(o.value.toLowerCase() === prod.size.toLowerCase()) { sizeSel.value = o.value; break; }
     }
   }
 
-  // quantity controls
+  // quantity
   const qtyInput = document.getElementById('d-qty');
   qtyInput.value = 1;
   document.getElementById('d-qty-minus').onclick = ()=> { qtyInput.value = Math.max(1, Number(qtyInput.value)-1); };
@@ -700,20 +821,21 @@ function openDetail(prod){
       price: prod.price,
       img: prod.img,
       size: document.getElementById('d-size').value,
-      thickness: document.getElementById('d-thickness').value,
+      thickness:
+
+ document.getElementById('d-thickness').value,
       qty: Number(document.getElementById('d-qty').value)
     };
-    // open checkout modal prefilled with this single item
-    openCheckout([item]);
+    openCheckout([item]); // direct checkout with this item
     detailModal.hide();
   };
 
   detailModal.show();
 }
 
-/* ---------------------------
-   Filters & Sorting & Search
-   --------------------------- */
+/* ============================
+   Filters & Search & Sort
+   ============================ */
 function applyFilters(){
   const size = document.getElementById('filter-size').value;
   const firm = document.getElementById('filter-firm').value;
@@ -733,6 +855,7 @@ function applyFilters(){
     const pa = Number(a.dataset.price), pb = Number(b.dataset.price);
     if(sort==='low') return pa-pb;
     if(sort==='high') return pb-pa;
+    // popularity fallback: use PRODUCTS order if available
     return 0;
   }).forEach(c=>grid.appendChild(c));
 }
@@ -741,9 +864,12 @@ function applyFilters(){
   if(el) el.addEventListener('input', applyFilters);
 });
 
-/* ---------------------------
+/* Apply initial - helpful when products inserted */
+applyFilters();
+
+/* ============================
    Counters (IntersectionObserver)
-   --------------------------- */
+   ============================ */
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -757,9 +883,60 @@ const obs = new IntersectionObserver((entries)=>{
 },{threshold:0.4});
 for(const c of document.querySelectorAll('.counter')) obs.observe(c);
 
-/* ---------------------------
-   Cart Events (plus/minus/delete)
-   --------------------------- */
+/* ============================
+   Cart rendering & helpers
+   ============================ */
+function renderCart(){
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let total = 0;
+  cart.forEach((it, idx)=>{
+    total += it.price * it.qty;
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex align-items-center justify-content-between';
+    li.innerHTML = `
+      <div class="d-flex align-items-center gap-3">
+        <img src="${it.img}" alt="${it.name}" width="64" height="64" class="rounded" loading="lazy" onerror="this.src='https://via.placeholder.com/64'"/>
+        <div>
+          <div class="fw-semibold">${it.name}</div>
+          <small class="text-muted">${fmt(it.price)} × 
+            <button class='btn btn-sm btn-light border ms-1 me-1' data-minus='${idx}' aria-label="Decrease">−</button>
+            <span>${it.qty}</span>
+            <button class='btn btn-sm btn-light border ms-1' data-plus='${idx}' aria-label="Increase">+</button>
+          </small>
+        </div>
+      </div>
+      <div class="text-end">
+        <div class="fw-bold">${fmt(it.price*it.qty)}</div>
+        <button class="btn btn-sm btn-outline-danger mt-1" data-del='${idx}' aria-label="Remove"><i class="bi bi-trash"></i></button>
+      </div>`;
+    list.appendChild(li);
+  });
+  document.getElementById('cart-total').textContent = fmt(total);
+  document.getElementById('checkout-total').textContent = fmt(total);
+  document.getElementById('cart-count').textContent = cart.reduce((a,b)=>a+b.qty,0);
+  save();
+}
+
+/* Add item to cart: merge by id+size+thickness */
+function addToCart(item){
+  item.price = Number(item.price) || 0;
+  item.qty = Number(item.qty) || 1;
+  const exIdx = cart.findIndex(i=>i.id===item.id && i.size===item.size && String(i.thickness)===String(item.thickness));
+  if(exIdx > -1){
+    cart[exIdx].qty += item.qty;
+  } else {
+    cart.push({...item});
+  }
+  save();
+  renderCart();
+  showToast('Cart updated — ' + item.name);
+}
+
+/* Init render */
+renderCart();
+
+/* Cart list event delegation (plus/minus/delete) */
 const cartList = document.getElementById('cart-items');
 cartList.addEventListener('click',(e)=>{
   const minus = e.target.closest('[data-minus]');
@@ -770,18 +947,17 @@ cartList.addEventListener('click',(e)=>{
   if(del){ const i = Number(del.dataset.del); cart.splice(i,1); save(); renderCart(); }
 });
 
-/* ---------------------------
+/* ============================
    Checkout logic
-   --------------------------- */
+   ============================ */
 let _checkout_items = [];
 let _checkout_from_cart = false;
 const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
 
 function openCheckout(items){
-  // items: array of order items (if empty -> use cart)
   const orderItems = items && items.length ? items : (cart.length ? cart.slice() : []);
   _checkout_items = orderItems;
-  _checkout_from_cart = !(items && items.length); // true if opened using cart (no items passed)
+  _checkout_from_cart = !(items && items.length);
   const list = document.getElementById('checkout-items');
   list.innerHTML = '';
   let total = 0;
@@ -796,11 +972,11 @@ function openCheckout(items){
   checkoutModal.show();
 }
 
-/* offcanvas "Checkout" button: open checkout only if cart not empty */
+/* offcanvas Checkout button click */
 document.getElementById('checkout-button').addEventListener('click', (e)=>{
   if(cart.length===0){
     e.preventDefault();
-    alert('Cart empty है — पहले कुछ add करें।');
+    alert('Your cart is empty — please add some items first.');
     return;
   }
   openCheckout(); // uses cart
@@ -808,11 +984,9 @@ document.getElementById('checkout-button').addEventListener('click', (e)=>{
 
 /* Pay Now / Place COD */
 document.getElementById('pay-now').addEventListener('click', async ()=>{
-  // simple validation
   const first = document.getElementById('c-first').value.trim();
   const phone = document.getElementById('c-phone').value.trim();
-  if(!first || !phone){ alert('कृपया नाम और फोन भरें'); return; }
-  // simulate payment
+  if(!first || !phone){ alert('Please Fill Name, Phone No And Email '); return; }
   const payBtn = document.getElementById('pay-now');
   payBtn.disabled = true;
   const orig = payBtn.textContent;
@@ -820,7 +994,6 @@ document.getElementById('pay-now').addEventListener('click', async ()=>{
   await new Promise(r=>setTimeout(r,1000));
   payBtn.disabled = false;
   payBtn.textContent = orig;
-  // success — clear cart if order was from cart
   if(_checkout_from_cart){
     cart = []; save(); renderCart();
   }
@@ -831,7 +1004,7 @@ document.getElementById('pay-now').addEventListener('click', async ()=>{
 document.getElementById('place-cod').addEventListener('click', ()=>{
   const first = document.getElementById('c-first').value.trim();
   const phone = document.getElementById('c-phone').value.trim();
-  if(!first || !phone){ alert('कृपया नाम और फोन भरें'); return; }
+  if(!first || !phone){ alert('Please Fill Name, Phone No And Email'); return; }
   if(_checkout_from_cart){
     cart = []; save(); renderCart();
   }
@@ -839,11 +1012,9 @@ document.getElementById('place-cod').addEventListener('click', ()=>{
   showToast('Order placed (COD). Our team will contact you.');
 });
 
-/* ---------------------------
-   Year & State list & Pincode lookup
-   --------------------------- */
-document.getElementById('year').textContent = new Date().getFullYear();
-
+/* ============================
+   Year & State & Pincode lookup
+   ============================ */
 const states = [
   "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana",
   "Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya",
@@ -854,7 +1025,7 @@ states.forEach(s=>{ const opt = document.createElement('option'); opt.value = s;
 
 document.getElementById('pincode-lookup').addEventListener('click', async ()=>{
   const pincode = document.getElementById('addr-pincode').value.trim();
-  if(!/^\d{6}$/.test(pincode)){ alert('कृपया 6 अंकों का सही पिनकोड डालें'); return; }
+  if(!/^\d{6}$/.test(pincode)){ alert('Please enter a valid 6-digit pincode.'); return; }
   try{
     const res = await fetch('https://api.postalpincode.in/pincode/' + pincode);
     const data = await res.json();
@@ -869,7 +1040,6 @@ document.getElementById('pincode-lookup').addEventListener('click', async ()=>{
           const partial = states.find(s => state.toLowerCase().includes(s.split(' ')[0].toLowerCase()));
           if(partial) stateSel.value = partial;
           else {
-            // add received state as a non-persistent option if not found
             let newOpt = Array.from(stateSel.options).find(o=>o.value.toLowerCase()===state.toLowerCase());
             if(!newOpt){
               const o = document.createElement('option'); o.value = state; o.textContent = state; stateSel.appendChild(o); stateSel.value = state;
@@ -878,9 +1048,9 @@ document.getElementById('pincode-lookup').addEventListener('click', async ()=>{
         }
       }
       document.getElementById('addr-state-code').value = po.StateCode || '';
-      showToast('Pincode से address मिला और auto-filled किया।');
+      showToast('The address was found using the pincode and auto-filled.');
     } else {
-      alert('Pincode के लिए कोई जानकारी नहीं मिली।');
+      alert('No information was found for the pincode.');
     }
   } catch(err){
     console.error(err);
@@ -888,18 +1058,56 @@ document.getElementById('pincode-lookup').addEventListener('click', async ()=>{
   }
 });
 
-/* ---------------------------
-   Accessibility small touches
-   --------------------------- */
-/* Make product cards focusable already set via tabindex and role */
+/* ============================
+   Contact form
+   ============================ */
+document.getElementById('contact-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('ct-name').value.trim();
+  const email = document.getElementById('ct-email').value.trim();
+  const msg = document.getElementById('ct-msg').value.trim();
+  if(!name || !email){ alert('Please Fill Name and Email'); return; }
+  // simulate server send
+  showToast('Message sent — we will contact you soon!');
+  document.getElementById('ct-name').value=''; document.getElementById('ct-email').value=''; document.getElementById('ct-msg').value='';
+});
 
-/* ---------------------------
-   Initial filter apply
-   --------------------------- */
-applyFilters();
+document.getElementById('ct-reset').addEventListener('click', ()=>{ document.getElementById('ct-name').value=''; document.getElementById('ct-email').value=''; document.getElementById('ct-msg').value=''; });
 
+/* ============================
+   Dark Mode toggle
+   ============================ */
+const darkToggle = document.getElementById('darkToggle');
+darkToggle.addEventListener('click', ()=>{
+  document.documentElement.classList.toggle('dark-mode');
+  // flip icon
+  if(document.documentElement.classList.contains('dark-mode')) darkToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  else darkToggle.innerHTML = '<i class="bi bi-moon-stars"></i>';
+});
+
+/* ============================
+   Accessibility & keyboard
+   ============================ */
+grid.querySelectorAll('.product').forEach(p=>{
+  p.addEventListener('keydown', (ev)=>{
+    if(ev.key === 'Enter') {
+      openDetail(getProductData(p));
+    }
+  });
+});
+
+/* ============================
+   Initialize: sort by popularity then render again
+   ============================ */
+function sortByPopularity(){
+  const sorted = PRODUCTS.slice().sort((a,b)=> (b.popular||0) - (a.popular||0));
+  renderProducts(sorted);
+  applyFilters();
+}
+sortByPopularity();
+
+/* End of inline script */
 </script>
+
 </body>
 </html>
-
-
